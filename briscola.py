@@ -3,7 +3,7 @@ import random
 #funzione per mischiare il mazzo
 def mischia_mazzo(mazzo: list[dict]):
 
-    for _ in range(random.randint(5, 10)):
+    for i in range(random.randint(5, 10)):
         random.shuffle(mazzo)
 
 #funzione per creare il mazzo
@@ -25,6 +25,17 @@ def scelta_briscola(mazzo: list [dict]) -> dict:
     carta_briscola = random.choice (mazzo)
     mazzo.remove (carta_briscola)
     mazzo.append (carta_briscola)
+    seme_briscola = carta_briscola["seme"]
+    lista_briscole = []
+    for carta in mazzo:
+        seme = carta["seme"]
+        if seme_briscola == seme:
+            lista_briscole.append(carta)
+
+
+
+
+
 
 
 
@@ -35,9 +46,9 @@ def scelta_briscola(mazzo: list [dict]) -> dict:
 print("Italiano->I")
 print("Romagnolo->R")
 scelta_lingua = input("Scegli la lingua con cui giocare: ")
-if scelta_lingua == "I":
+if scelta_lingua == "I" or scelta_lingua == "i":
     print("La partita si svolgerà in italiano.")
-elif scelta_lingua == "R":
+elif scelta_lingua == "R" or scelta_lingua == "r":
     print("Us zuga in rumagnol.")
 else:
     print("Scelta non valida, invurnid.")
