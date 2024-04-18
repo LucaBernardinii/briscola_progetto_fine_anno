@@ -2,7 +2,6 @@ import random
 
 #funzione per mischiare il mazzo
 def mischia_mazzo(mazzo: list[dict]):
-
     for i in range(random.randint(5, 10)):
         random.shuffle(mazzo)
 
@@ -50,19 +49,23 @@ def assegna_valori(carta: dict) -> int:
     else:
         return 0
     
-#funzione per la distribuzione iniziale delle carte
-def pesca_carte(mazzo: list[dict]) -> list[dict]:
+#funzione per la distribuzione iniziale delle carte del giocatore
+def distribuzione_iniziale_giocatore(mazzo: list[dict]) -> list[dict]:
     mano_giocatore = []
-    mano_computer = []
     for i in range(3):
         carta_estratta = random.choice(mazzo)
         mano_giocatore.append(carta_estratta)
         mazzo.remove(carta_estratta)
-    for x in range(3):
+    return mano_giocatore
+
+#funzione per la distribuzione iniziale delle carte del computer
+def distribuzione_iniziale_computer(mazzo: list[dict]) -> list[dict]:
+    mano_computer = []
+    for i in range(3):
         carta_estratta = random.choice(mazzo)
         mano_computer.append(carta_estratta)
         mazzo.remove(carta_estratta)
-    return mano_giocatore, mano_computer            #check
+    return mano_computer
 
 #funzione per la partita in italiano
 def partita_italiano(mazzo: list [dict]) -> int:
@@ -70,7 +73,11 @@ def partita_italiano(mazzo: list [dict]) -> int:
     punteggio_computer = 0
     mazzo = crea_mazzo (["denari","coppe","bastoni","spade"],["Asso",2,3,4,5,6,7,"Fante","Cavallo","Re"])
     mischia_mazzo(mazzo)
+    mano_giocatore = distribuzione_iniziale_giocatore(mazzo)
+    mano_computer = distribuzione_iniziale_computer(mazzo)
     while len(mazzo) > 0:
+        for i in range(3):
+            print(f"In mano hai" carta)
         
 
 #funzione per la partita in romagnolo
