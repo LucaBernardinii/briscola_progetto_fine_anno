@@ -77,7 +77,7 @@ def partita_italiano(mazzo: list [dict]) -> int:
     mano_computer = distribuzione_iniziale_computer(mazzo)
     while len(mazzo) > 0:
         for i in range(3):
-            print(f"In mano hai" carta)
+            print(f"In mano hai" carta[""])
         
 
 #funzione per la partita in romagnolo
