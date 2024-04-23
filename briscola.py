@@ -77,7 +77,11 @@ def partita_italiano(mazzo: list [dict]) -> int:
     mano_computer = distribuzione_iniziale_computer(mazzo)
     while len(mazzo) > 0:
         for i in range(3):
-            print(f"In mano hai" carta[""])
+            print(f"In mano hai {mano_giocatore[0]}, {mano_giocatore[1]}, {mano_giocatore[2]}")
+            carta_scelta = input("Scegli la carta da giocare 0/1/2: ")
+            carta_giocata = mano_giocatore[carta_scelta]
+            mano_giocatore.remove(carta_giocata)
+            carta_giocata_computer = random.choice(mano_computer)
         
 
 #funzione per la partita in romagnolo
