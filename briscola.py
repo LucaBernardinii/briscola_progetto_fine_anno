@@ -35,16 +35,16 @@ def scelta_briscola(mazzo: list [dict]) -> dict:
     return carta_briscola
 
 #funzione per assegnazione dei valori delle carte
-def assegna_valori(carta: dict) -> int:
-    if carta["valore"] == "Asso" or carta["valore"] == "Ass":
+def assegna_valori(carta_estratta: dict) -> int:
+    if carta_estratta["valore"] == "Asso" or carta_estratta["valore"] == "Ass":
         return 11
-    elif carta["valore"] == "Fante" or carta["valore"] == "Fent":
+    elif carta_estratta["valore"] == "Fante" or carta_estratta["valore"] == "Fent":
         return 2
-    elif carta["valore"] == "Cavallo" or carta["valore"] == "Caval":
+    elif carta_estratta["valore"] == "Cavallo" or carta_estratta["valore"] == "Caval":
         return 3
-    elif carta["valore"] == "Re":
+    elif carta_estratta["valore"] == "Re":
         return 4
-    elif carta["valore"] == 3:
+    elif carta_estratta["valore"] == 3:
         return 10
     else:
         return 0
@@ -76,12 +76,13 @@ def partita_italiano(mazzo: list [dict]) -> int:
     mano_giocatore = distribuzione_iniziale_giocatore(mazzo)
     mano_computer = distribuzione_iniziale_computer(mazzo)
     while len(mazzo) > 0:
-        for i in range(3):
-            print(f"In mano hai {mano_giocatore[0]}, {mano_giocatore[1]}, {mano_giocatore[2]}")
-            carta_scelta = input("Scegli la carta da giocare 0/1/2: ")
-            carta_giocata = mano_giocatore[carta_scelta]
-            mano_giocatore.remove(carta_giocata)
-            carta_giocata_computer = random.choice(mano_computer)
+        print(f"In mano hai {mano_giocatore[0]}, {mano_giocatore[1]}, {mano_giocatore[2]}")
+        carta_scelta = input("Scegli la carta da giocare 0/1/2: ")
+        carta_giocata = mano_giocatore[carta_scelta]
+        mano_giocatore.remove(carta_giocata)
+        carta_giocata_computer = random.choice(mano_computer)
+        valore_carta_giocatore = assegna_valori(carta_giocata)
+        valore_carta_computer = assegna_valori(carta_giocata_computer)
         
 
 #funzione per la partita in romagnolo
