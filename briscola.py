@@ -36,11 +36,11 @@ def scelta_briscola(mazzo: list [dict]) -> dict:
 
 #funzione per assegnazione dei valori delle carte
 def assegna_valori(carta_estratta: dict) -> int:
-    if carta_estratta["valore"] == "Asso" or carta_estratta["valore"] == "Ass":
+    if carta_estratta["valore"] == "Asso":
         return 11
-    elif carta_estratta["valore"] == "Fante" or carta_estratta["valore"] == "Fent":
+    elif carta_estratta["valore"] == "Fante":
         return 2
-    elif carta_estratta["valore"] == "Cavallo" or carta_estratta["valore"] == "Caval":
+    elif carta_estratta["valore"] == "Cavallo":
         return 3
     elif carta_estratta["valore"] == "Re":
         return 4
@@ -68,7 +68,7 @@ def distribuzione_iniziale_computer(mazzo: list[dict]) -> list[dict]:
     return mano_computer
 
 #funzione per la partita in italiano
-def partita_italiano(mazzo: list [dict]) -> int:
+def partita_italiano() -> int:
     punteggio_giocatore = 0
     punteggio_computer = 0
     mazzo = crea_mazzo (["denari","coppe","bastoni","spade"],["Asso",2,3,4,5,6,7,"Fante","Cavallo","Re"])
@@ -84,38 +84,3 @@ def partita_italiano(mazzo: list [dict]) -> int:
         valore_carta_giocatore = assegna_valori(carta_giocata)
         valore_carta_computer = assegna_valori(carta_giocata_computer)
         
-
-#funzione per la partita in romagnolo
-def partita_romagnolo(mazzo: list [dict]) -> int:
-    punteggio_giocatore = 0
-    punteggio_computer = 0
-    mazzo = crea_mazzo (["danèri","copp","bastun","spede"],["Ass",2,3,4,5,6,7,"Fent","Caval","Re"])
-    mischia_mazzo(mazzo)
-    while len(mazzo) > 0:
-    
-
-
-
-
-
-
-
-
-
-#svolgimento partita
-print("Italiano->I")
-print("Romagnolo->R")
-scelta_lingua = input("Scegli la lingua con cui giocare: ")
-if scelta_lingua == "I" or scelta_lingua == "i":
-    print("La partita si svolgerà in italiano.")
-    nome_giocatore = input("Inserisci il tuo nome?: ")
-    
-elif scelta_lingua == "R" or scelta_lingua == "r":
-    print("Us zuga in rumagnol.")
-    nome_giocatore = input("Cum ut cem?: ")
-    
-else:
-    print("Scelta non valida, invurnid.")
-
-
-
