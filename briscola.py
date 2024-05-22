@@ -75,7 +75,7 @@ def partita():
         primo_giocatore = "giocatore"
 
         #fase di gioco
-        while len(mazzo) > 0:
+        while len(mazzo) > 0 and len(mano_giocatore) > 0 and len(mano_computer) > 0:
             if primo_giocatore == "giocatore":
                 print(f"La briscola è {carta_briscola['seme']}")
                 print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
@@ -198,9 +198,9 @@ def partita():
 
         scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
         if scelta_partita == "s":
-            nuova_partita == True
+            nuova_partita = True
         elif scelta_partita == "n":
-            nuova_partita == False
+            nuova_partita = False
         else:
             pass
 
