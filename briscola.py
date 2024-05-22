@@ -24,7 +24,6 @@ def scelta_briscola(mazzo: list [dict]) -> dict:
     carta_briscola = random.choice (mazzo)
     mazzo.remove (carta_briscola)
     mazzo.append (carta_briscola)
-    print(f"La briscola è {carta_briscola['seme']}")
     return carta_briscola
 
 #funzione per assegnazione dei valori delle carte
@@ -78,6 +77,7 @@ def partita():
         #fase di gioco
         while len(mazzo) > 0:
             if primo_giocatore == "giocatore":
+                print(f"La briscola è {carta_briscola['seme']}")
                 print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
@@ -93,6 +93,7 @@ def partita():
                 carta_estratta_computer = estrai_carta(mazzo)
                 mano_computer.append(carta_estratta_computer)
             elif primo_giocatore == "computer":
+                print(f"La briscola è {carta_briscola['seme']}")
                 carta_giocata_computer = random.choice(mano_computer)
                 mano_computer.remove(carta_giocata_computer)
                 print(f"Il computer ha giocato {carta_giocata_computer}")
@@ -185,21 +186,21 @@ def partita():
                         pass
             print("_________________________________________________________________________")
             
-    print(f"Il punteggio è: {punteggio_giocatore} per {nome_giocatore} e {punteggio_computer} per il computer.")
-    if punteggio_giocatore > punteggio_computer:
-        print(f"{nome_giocatore} ha vinto la partita con {punteggio_giocatore}.")
-    elif punteggio_giocatore < punteggio_computer:
-        print(f"Il computer ha vinto la partita con {punteggio_computer}.")
-    else:
-        print(f"{nome_giocatore} e il computer hanno pareggiato totalizzando entrambi {punteggio_giocatore}.")
-    
-    scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
-    if scelta_partita == "s":
-        nuova_partita == True
-    elif scelta_partita == "n":
-        nuova_partita == False
-    else:
-        pass
+        print(f"Il punteggio è: {punteggio_giocatore} per {nome_giocatore} e {punteggio_computer} per il computer.")
+        if punteggio_giocatore > punteggio_computer:
+            print(f"{nome_giocatore} ha vinto la partita con {punteggio_giocatore}.")
+        elif punteggio_giocatore < punteggio_computer:
+            print(f"Il computer ha vinto la partita con {punteggio_computer}.")
+        else:
+            print(f"{nome_giocatore} e il computer hanno pareggiato totalizzando entrambi {punteggio_giocatore}.")
+
+        scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
+        if scelta_partita == "s":
+            nuova_partita == True
+        elif scelta_partita == "n":
+            nuova_partita == False
+        else:
+            pass
 
 #invocazione funzione partita       
 partita()
