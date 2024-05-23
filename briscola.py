@@ -201,11 +201,11 @@ def partita():
                         punteggio_computer += valore_carta_giocatore + valore_carta_computer
                         primo_giocatore = "computer"
                     else:
-                        if carta_giocata["seme"] > carta_giocata_computer["seme"]:
+                        if carta_giocata["valore"] > carta_giocata_computer["valore"]:
                             print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                             punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "giocatore"
-                        elif carta_giocata["seme"] < carta_giocata_computer["seme"]:
+                        elif carta_giocata["valore"] < carta_giocata_computer["valore"]:
                             print(colored("Il computer ha vinto questa mano.", "red"))
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
