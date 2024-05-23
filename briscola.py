@@ -67,6 +67,7 @@ def partita():
 
         #fase di gioco
         while len(mazzo) > 0 and len(mano_giocatore) > 0 and len(mano_computer) > 0:
+            #inizia il giocatore
             if primo_giocatore == "giocatore":
                 print(f"La briscola è {carta_briscola['seme']}")
                 print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
@@ -83,6 +84,7 @@ def partita():
                 mano_giocatore.append(carta_estratta_giocatore)
                 carta_estratta_computer = estrai_carta(mazzo)
                 mano_computer.append(carta_estratta_computer)
+            #inizia il computer
             elif primo_giocatore == "computer":
                 print(f"La briscola è {carta_briscola['seme']}")
                 carta_giocata_computer = random.choice(mano_computer)
@@ -100,6 +102,7 @@ def partita():
                 carta_estratta_computer = estrai_carta(mazzo)
                 mano_computer.append(carta_estratta_computer)
 
+            #assegnazione valori
             valore_carta_giocatore = assegna_valori(carta_giocata)
             valore_carta_computer = assegna_valori(carta_giocata_computer)
 
@@ -179,6 +182,7 @@ def partita():
                         pass
             print("_________________________________________________________________________")
             
+        #fine partita e punteggio totale
         print(f"Il punteggio è: {punteggio_giocatore} per {nome_giocatore} e {punteggio_computer} per il computer.")
         if punteggio_giocatore > punteggio_computer:
             print(f"{nome_giocatore} ha vinto la partita con {punteggio_giocatore}.")
@@ -187,6 +191,7 @@ def partita():
         else:
             print(f"{nome_giocatore} e il computer hanno pareggiato totalizzando entrambi {punteggio_giocatore}.")
 
+        #nuova partita o abbandono
         scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
         if scelta_partita == "s":
             nuova_partita = True
