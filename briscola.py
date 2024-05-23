@@ -42,22 +42,13 @@ def assegna_valori(carta_estratta: dict) -> int:
         return 0
     
 #funzione per la distribuzione iniziale delle carte del giocatore
-def distribuzione_iniziale_giocatore(mazzo: list[dict]) -> list[dict]:
-    mano_giocatore = []
+def distribuzione_iniziale(mazzo: list[dict]) -> list[dict]:
+    mano = []
     for i in range(3):
         carta_estratta = random.choice(mazzo)
-        mano_giocatore.append(carta_estratta)
+        mano.append(carta_estratta)
         mazzo.remove(carta_estratta)
-    return mano_giocatore
-
-#funzione per la distribuzione iniziale delle carte del computer
-def distribuzione_iniziale_computer(mazzo: list[dict]) -> list[dict]:
-    mano_computer = []
-    for i in range(3):
-        carta_estratta = random.choice(mazzo)
-        mano_computer.append(carta_estratta)
-        mazzo.remove(carta_estratta)
-    return mano_computer
+    return mano
 
 #funzione per la partita
 def partita():
@@ -68,8 +59,8 @@ def partita():
         punteggio_computer = 0
         mazzo = crea_mazzo (["denari","coppe","bastoni","spade"],["Asso",2,3,4,5,6,7,"Fante","Cavallo","Re"])
         mischia_mazzo(mazzo)
-        mano_giocatore = distribuzione_iniziale_giocatore(mazzo)
-        mano_computer = distribuzione_iniziale_computer(mazzo)
+        mano_giocatore = distribuzione_iniziale(mazzo)
+        mano_computer = distribuzione_iniziale(mazzo)
         carta_briscola = scelta_briscola(mazzo)
         seme_briscola = carta_briscola["seme"]
         primo_giocatore = "giocatore"
