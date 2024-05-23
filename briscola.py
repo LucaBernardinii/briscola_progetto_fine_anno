@@ -84,6 +84,7 @@ def partita():
                 mano_giocatore.append(carta_estratta_giocatore)
                 carta_estratta_computer = estrai_carta(mazzo)
                 mano_computer.append(carta_estratta_computer)
+
             #inizia il computer
             elif primo_giocatore == "computer":
                 print(f"La briscola è {carta_briscola['seme']}")
@@ -112,10 +113,12 @@ def partita():
                 print(f"{nome_giocatore} ha vinto questa mano.")
                 punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                 primo_giocatore = "giocatore"
+
             elif carta_giocata["seme"] != seme_briscola and carta_giocata_computer["seme"] == seme_briscola:
                 print("Il computer ha vinto questa mano.")
                 punteggio_computer += valore_carta_giocatore + valore_carta_computer
                 primo_giocatore = "computer"
+
             elif carta_giocata["seme"] == seme_briscola and carta_giocata_computer["seme"] == seme_briscola:
                 if valore_carta_giocatore > valore_carta_computer:
                     print(f"{nome_giocatore} ha vinto questa mano.")
@@ -151,6 +154,7 @@ def partita():
                             print("Il computer ha vinto questa mano.")
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
+
                     elif seme_prioritario == "coppe":
                         if carta_giocata["seme"] == "coppe":
                             print(f"{nome_giocatore} ha vinto questa mano.")
@@ -160,6 +164,7 @@ def partita():
                             print("Il computer ha vinto questa mano.")
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
+
                     elif seme_prioritario == "bastoni":
                         if carta_giocata["seme"] == "bastoni":
                             print(f"{nome_giocatore} ha vinto questa mano.")
@@ -169,6 +174,7 @@ def partita():
                             print("Il computer ha vinto questa mano.")
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
+                            
                     elif seme_prioritario == "spade":
                         if carta_giocata["seme"] == "spade":
                             print(f"{nome_giocatore} ha vinto questa mano.")
