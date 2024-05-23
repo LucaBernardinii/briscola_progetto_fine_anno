@@ -104,8 +104,6 @@ def partita():
 
         #fase di gioco
         while len(mano_giocatore) > 0:
-            print(punteggio_giocatore)
-            print(punteggio_computer)
             #inizia il giocatore
             if primo_giocatore == "giocatore":
                 print(colored(f"La briscola è {carta_briscola['seme']}", "cyan"))
@@ -274,6 +272,7 @@ def partita():
         elif scelta_partita == "n":
             nuova_partita = False
             print(f"{nome_giocatore} abbandona il tavolo.")
+            print("Grazie per aver giocato a Briscola romagnola in Python!")
         else:
             pass
 
