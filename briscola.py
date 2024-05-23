@@ -1,4 +1,5 @@
 import random
+from termcolor import colored
 
 #funzione per mischiare il mazzo
 def mischia_mazzo(mazzo: list[dict]):
@@ -71,13 +72,13 @@ def partita():
             print(punteggio_computer)
             #inizia il giocatore
             if primo_giocatore == "giocatore":
-                print(f"La briscola è {carta_briscola['seme']}")
+                print(colored(f"La briscola è {carta_briscola['seme']}", "cyan"))
                 if len(mano_giocatore) == 3:
-                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
+                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}", "yellow"))
                 elif len(mano_giocatore) == 2:
-                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}")
+                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}", "yellow"))
                 elif len(mano_giocatore) == 1:
-                    print(f"In mano hai 1 = {mano_giocatore[0]}")
+                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}", "yellow"))
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
@@ -95,16 +96,16 @@ def partita():
 
             #inizia il computer
             elif primo_giocatore == "computer":
-                print(f"La briscola è {carta_briscola['seme']}")
+                print(colored(f"La briscola è {carta_briscola['seme']}", "cyan"))
                 carta_giocata_computer = random.choice(mano_computer)
                 mano_computer.remove(carta_giocata_computer)
                 print(f"Il computer ha giocato {carta_giocata_computer}")
                 if len(mano_giocatore) == 3:
-                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
+                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}", "yellow"))
                 elif len(mano_giocatore) == 2:
-                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}")
+                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}", "yellow"))
                 elif len(mano_giocatore) == 1:
-                    print(f"In mano hai 1 = {mano_giocatore[0]}")
+                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}", "yellow"))
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
@@ -126,22 +127,22 @@ def partita():
             #determinazione vincitore
             #casi con briscola
             if carta_giocata["seme"] == seme_briscola and carta_giocata_computer["seme"] != seme_briscola:
-                print(f"{nome_giocatore} ha vinto questa mano.")
+                print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                 punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                 primo_giocatore = "giocatore"
 
             elif carta_giocata["seme"] != seme_briscola and carta_giocata_computer["seme"] == seme_briscola:
-                print("Il computer ha vinto questa mano.")
+                print(colored("Il computer ha vinto questa mano.", "red"))
                 punteggio_computer += valore_carta_giocatore + valore_carta_computer
                 primo_giocatore = "computer"
 
             elif carta_giocata["seme"] == seme_briscola and carta_giocata_computer["seme"] == seme_briscola:
                 if valore_carta_giocatore > valore_carta_computer:
-                    print(f"{nome_giocatore} ha vinto questa mano.")
+                    print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                     punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                     primo_giocatore = "giocatore"
                 elif valore_carta_giocatore < valore_carta_computer:
-                    print("Il computer ha vinto questa mano.")
+                    print(colored("Il computer ha vinto questa mano.", "red"))
                     punteggio_computer += valore_carta_giocatore + valore_carta_computer
                     primo_giocatore = "computer"
                 else:
@@ -150,11 +151,11 @@ def partita():
             else:
                 if carta_giocata["seme"] == carta_giocata_computer["seme"]:
                     if valore_carta_giocatore > valore_carta_computer:
-                        print(f"{nome_giocatore} ha vinto questa mano.")
+                        print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                         punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                         primo_giocatore = "giocatore"
                     elif valore_carta_giocatore < valore_carta_computer:
-                        print("Il computer ha vinto questa mano.")
+                        print(colored("Il computer ha vinto questa mano.", "red"))
                         punteggio_computer += valore_carta_giocatore + valore_carta_computer
                         primo_giocatore = "computer"
                     else:
@@ -163,41 +164,41 @@ def partita():
                 else:
                     if seme_prioritario == "denari":
                         if carta_giocata["seme"] == "denari":
-                            print(f"{nome_giocatore} ha vinto questa mano.")
+                            print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                             punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "giocatore"
                         else:
-                            print("Il computer ha vinto questa mano.")
+                            print(colored("Il computer ha vinto questa mano.", "red"))
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
 
                     elif seme_prioritario == "coppe":
                         if carta_giocata["seme"] == "coppe":
-                            print(f"{nome_giocatore} ha vinto questa mano.")
+                            print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                             punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "giocatore"
                         else:
-                            print("Il computer ha vinto questa mano.")
+                            print(colored("Il computer ha vinto questa mano.", "red"))
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
 
                     elif seme_prioritario == "bastoni":
                         if carta_giocata["seme"] == "bastoni":
-                            print(f"{nome_giocatore} ha vinto questa mano.")
+                            print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                             punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "giocatore"
                         else:
-                            print("Il computer ha vinto questa mano.")
+                            print(colored("Il computer ha vinto questa mano.", "red"))
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
 
                     elif seme_prioritario == "spade":
                         if carta_giocata["seme"] == "spade":
-                            print(f"{nome_giocatore} ha vinto questa mano.")
+                            print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
                             punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "giocatore"
                         else:
-                            print("Il computer ha vinto questa mano.")
+                            print(colored("Il computer ha vinto questa mano.", "red"))
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
                     else:
