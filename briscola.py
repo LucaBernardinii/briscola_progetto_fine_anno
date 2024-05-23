@@ -51,8 +51,41 @@ def distribuzione_iniziale(mazzo: list[dict]) -> list[dict]:
         mazzo.remove(carta_estratta)
     return mano
 
+#funzione per la spiegazione del gioco
+def tutorial():
+    print("Benvenuto al gioco della Briscola romagnola!")
+    scelta = input(str("Conosci già il gioco della briscola?  (s/n): "))
+    if scelta == "s":
+        print("Bene! Inzia la partita!")
+    elif scelta == "n":
+        print("Ecco una spiegazione delle regole della briscola: ")
+        print(colored("Regole generali: ", "light_red"))
+        print("Briscola si gioca con un mazzo di 40 carte. Può essere giocato da 2 a 6 giocatori, divisi in coppie o squadre.")
+        print("Lo scopo del gioco è totalizzare almeno 61 punti, dei 120 disponibili.")
+        input("Premi invio per continuare.")
+        print(colored("Punteggi delle carte: ", "light_red"))
+        print("Carichi: Asso di valore 11, 3 di valore 10.")
+        print("Figure: Re di valore 4, Cavallo di valore 3, Fante di valore 2.")
+        print("Lisci: 7, 6, 5, 4, 2 di valore 0.")
+        input("Premi invio per continuare.")
+        print(colored("Inizio del gioco: ", "light_red"))
+        print("Si distribuiscono tre carte ciascuno e si pone una carta al centro del tavolo, tutte le carte con con lo stesso seme di quella al centro sono briscole.")
+        print("Le briscole hanno più valore rispetto alle carte normali, ad esempio un Fante di briscola prende in ogni caso un Fante non di briscola.")
+        input("Premi invio per continuare.")
+        print(colored("Svolgimento del gioco: ", "light_red"))
+        print("Le carte di valore più alto prendono quelle di valore più basso e le carte di briscola prendono le carte non di briscola.")
+        print("Se si giocano due carte dello stesso valore non di briscola, vince chi ha giocato per primo.")
+        print("Il vincitore della mano ha diritto ha pescare per primo e a giocare per primo al turno successivo.")
+        input("Premi invio per continuare.")
+        print(colored("Fine del gioco e determinazione del vincitore: ", "light_red"))
+        print("Il gioco finisce quando si sono giocate tutte le carte nel mazzo e in mano.")
+        print("Si contano i punti secondo le regole sopra, chi ha totalizzato più vince.")
+        input("Complimenti! Ora sai giocare a briscola, ripassa le regole se ne hai bisogno e quando sei pronto premi Invio per iniziare a giocare.")
+        print("_________________________________________________________________________")
+
 #funzione per la partita
 def partita():
+    tutorial()
     nuova_partita = True
     while nuova_partita == True:
         nome_giocatore = input("Inserisci il tuo nome: ")
