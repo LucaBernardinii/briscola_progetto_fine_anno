@@ -66,11 +66,18 @@ def partita():
         primo_giocatore = "giocatore"
 
         #fase di gioco
-        while len(mazzo) > 0 and len(mano_giocatore) > 0 and len(mano_computer) > 0:
+        while len(mano_giocatore) > 0:
+            print(punteggio_giocatore)
+            print(punteggio_computer)
             #inizia il giocatore
             if primo_giocatore == "giocatore":
                 print(f"La briscola è {carta_briscola['seme']}")
-                print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
+                if len(mano_giocatore) == 3:
+                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
+                elif len(mano_giocatore) == 2:
+                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}")
+                elif len(mano_giocatore) == 1:
+                    print(f"In mano hai 1 = {mano_giocatore[0]}")
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
@@ -80,10 +87,11 @@ def partita():
                 mano_computer.remove(carta_giocata_computer)
                 print(f"Il computer ha giocato {carta_giocata_computer}")
                 seme_prioritario = carta_giocata["seme"]
-                carta_estratta_giocatore = estrai_carta(mazzo)
-                mano_giocatore.append(carta_estratta_giocatore)
-                carta_estratta_computer = estrai_carta(mazzo)
-                mano_computer.append(carta_estratta_computer)
+                if len(mazzo) > 0:
+                    carta_estratta_giocatore = estrai_carta(mazzo)
+                    mano_giocatore.append(carta_estratta_giocatore)
+                    carta_estratta_computer = estrai_carta(mazzo)
+                    mano_computer.append(carta_estratta_computer)
 
             #inizia il computer
             elif primo_giocatore == "computer":
@@ -91,17 +99,25 @@ def partita():
                 carta_giocata_computer = random.choice(mano_computer)
                 mano_computer.remove(carta_giocata_computer)
                 print(f"Il computer ha giocato {carta_giocata_computer}")
-                print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
+                if len(mano_giocatore) == 3:
+                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}")
+                elif len(mano_giocatore) == 2:
+                    print(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}")
+                elif len(mano_giocatore) == 1:
+                    print(f"In mano hai 1 = {mano_giocatore[0]}")
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
                 mano_giocatore.remove(carta_giocata)
                 print(f"{nome_giocatore} ha giocato {carta_giocata}.")
                 seme_prioritario = carta_giocata_computer["seme"]
-                carta_estratta_giocatore = estrai_carta(mazzo)
-                mano_giocatore.append(carta_estratta_giocatore)
-                carta_estratta_computer = estrai_carta(mazzo)
-                mano_computer.append(carta_estratta_computer)
+                if len(mazzo) > 0:
+                    carta_estratta_giocatore = estrai_carta(mazzo)
+                    mano_giocatore.append(carta_estratta_giocatore)
+                    carta_estratta_computer = estrai_carta(mazzo)
+                    mano_computer.append(carta_estratta_computer)
+                else:
+                    pass
 
             #assegnazione valori
             valore_carta_giocatore = assegna_valori(carta_giocata)
@@ -174,7 +190,7 @@ def partita():
                             print("Il computer ha vinto questa mano.")
                             punteggio_computer += valore_carta_giocatore + valore_carta_computer
                             primo_giocatore = "computer"
-                            
+
                     elif seme_prioritario == "spade":
                         if carta_giocata["seme"] == "spade":
                             print(f"{nome_giocatore} ha vinto questa mano.")
