@@ -55,6 +55,9 @@ def distribuzione_iniziale(mazzo: list[dict]) -> list[dict]:
 def tutorial():
     print("Benvenuto al gioco della Briscola romagnola!")
     scelta = input(str("Conosci già il gioco della briscola?  (s/n): "))
+    while scelta not in ["s", "n"]:
+        print("Errore, scelta non valida.")
+        scelta = input(str("Conosci già il gioco della briscola?  (s/n): "))
     if scelta == "s":
         print("Bene! Inzia la partita!")
     elif scelta == "n":
@@ -113,6 +116,9 @@ def partita():
                 elif len(mano_giocatore) == 1:
                     print(colored(f"In mano hai 1 = {mano_giocatore[0]}", "yellow"))
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
+                while carta_scelta not in [1, 2, 3,]:
+                    print("Errore, inserisci un numero valido 1/2/3:")
+                    carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
                 mano_giocatore.remove(carta_giocata)
@@ -140,6 +146,9 @@ def partita():
                 elif len(mano_giocatore) == 1:
                     print(colored(f"In mano hai 1 = {mano_giocatore[0]}", "yellow"))
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
+                while carta_scelta not in [1, 2, 3,]:
+                    print("Errore, inserisci un numero valido 1/2/3:")
+                    carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
                 mano_giocatore.remove(carta_giocata)
@@ -192,7 +201,14 @@ def partita():
                         punteggio_computer += valore_carta_giocatore + valore_carta_computer
                         primo_giocatore = "computer"
                     else:
-                        pass
+                        if carta_giocata["seme"] > carta_giocata_computer["seme"]:
+                            print(colored(f"{nome_giocatore} ha vinto questa mano.", "green"))
+                            punteggio_giocatore += valore_carta_giocatore + valore_carta_computer
+                            primo_giocatore = "giocatore"
+                        elif carta_giocata["seme"] < carta_giocata_computer["seme"]:
+                            print(colored("Il computer ha vinto questa mano.", "red"))
+                            punteggio_computer += valore_carta_giocatore + valore_carta_computer
+                            primo_giocatore = "computer"
                 #casi con seme diverso
                 else:
                     if seme_prioritario == "denari":
@@ -249,6 +265,9 @@ def partita():
 
         #nuova partita o abbandono
         scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
+        while scelta_partita not in ["s", "n"]:
+            print("Errore scelta non valida.")
+            scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
         if scelta_partita == "s":
             nuova_partita = True
             print(f"{nome_giocatore} vuole giocare un'altra partita.")
