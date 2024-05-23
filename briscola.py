@@ -199,8 +199,10 @@ def partita():
         scelta_partita = input("Vuoi fare un'altra partita? (s/n) ")
         if scelta_partita == "s":
             nuova_partita = True
+            print(f"{nome_giocatore} vuole giocare un'altra partita.")
         elif scelta_partita == "n":
             nuova_partita = False
+            print(f"{nome_giocatore} abbandona il tavolo.")
         else:
             pass
 
