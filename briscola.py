@@ -269,6 +269,7 @@ def partita():
         if scelta_partita == "s":
             nuova_partita = True
             print(f"{nome_giocatore} vuole giocare un'altra partita.")
+            print("_________________________________________________________________________")
         elif scelta_partita == "n":
             nuova_partita = False
             print(f"{nome_giocatore} abbandona il tavolo.")
