@@ -89,9 +89,9 @@ def tutorial():
 #funzione per la partita
 def partita():
     tutorial()
+    nome_giocatore = input("Inserisci il tuo nome: ")
     nuova_partita = True
     while nuova_partita == True:
-        nome_giocatore = input("Inserisci il tuo nome: ")
         punteggio_giocatore = 0
         punteggio_computer = 0
         mazzo = crea_mazzo (["denari","coppe","bastoni","spade"],["Asso",2,3,4,5,6,7,"Fante","Cavallo","Re"])
