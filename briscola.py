@@ -174,21 +174,6 @@ def partita():
                 seme4 = carta_giocata_computer["seme"]
                 print(f"Il computer ha giocato {valore4} di {seme4}")
                 if len(mano_giocatore) == 3:
-                    valore1 = mano_giocatore[0]["valore"]
-                    valore2 = mano_giocatore[1]["valore"]
-                    valore3 = mano_giocatore[2]["valore"]
-                    seme1 = mano_giocatore[0]["seme"]
-                    seme2 = mano_giocatore[1]["seme"]
-                    seme3 = mano_giocatore[2]["seme"]
-                elif len(mano_giocatore) == 2:
-                    valore1 = mano_giocatore[0]["valore"]
-                    valore2 = mano_giocatore[1]["valore"]
-                    seme1 = mano_giocatore[0]["seme"]
-                    seme2 = mano_giocatore[1]["seme"]
-                elif len(mano_giocatore) == 1:
-                    valore1 = mano_giocatore[0]["valore"]
-                    seme1 = mano_giocatore[0]["seme"]
-                if len(mano_giocatore) == 3:
                     print(colored(f"In mano hai 1 = {valore1} di {seme1}, 2 = {valore2} di {seme2}, 3 = {valore3} di {seme3}", "yellow"))
                 elif len(mano_giocatore) == 2:
                     print(colored(f"In mano hai 1 = {valore1} di {seme1}, 2 = {valore2} di {seme2}", "yellow"))
