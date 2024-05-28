@@ -108,11 +108,26 @@ def partita():
             if primo_giocatore == "giocatore":
                 print(colored(f"La briscola è {carta_briscola['seme']}", "cyan"))
                 if len(mano_giocatore) == 3:
-                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}", "yellow"))
+                    valore1 = mano_giocatore[0]["valore"]
+                    valore2 = mano_giocatore[1]["valore"]
+                    valore3 = mano_giocatore[2]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                    seme2 = mano_giocatore[1]["seme"]
+                    seme3 = mano_giocatore[2]["seme"]
                 elif len(mano_giocatore) == 2:
-                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}", "yellow"))
+                    valore1 = mano_giocatore[0]["valore"]
+                    valore2 = mano_giocatore[1]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                    seme2 = mano_giocatore[1]["seme"]
                 elif len(mano_giocatore) == 1:
-                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}", "yellow"))
+                    valore1 = mano_giocatore[0]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                if len(mano_giocatore) == 3:
+                    print(colored(f"In mano hai 1 = {valore1} di {seme1}, 2 = {valore2} di {seme2}, 3 = {valore3} di {seme3}", "yellow"))
+                elif len(mano_giocatore) == 2:
+                    print(colored(f"In mano hai 1 = {valore1} di {seme1}, 2 = {valore2} di {seme2}", "yellow"))
+                elif len(mano_giocatore) == 1:
+                    print(colored(f"In mano hai 1 = {valore1} di {seme1}", "yellow"))
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 while carta_scelta not in [1, 2, 3,]:
                     print("Errore, inserisci un numero valido 1/2/3:")
@@ -120,10 +135,14 @@ def partita():
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
                 mano_giocatore.remove(carta_giocata)
-                print(f"{nome_giocatore} ha giocato {carta_giocata}.")
+                valore5 = carta_giocata["valore"]
+                seme5 = carta_giocata["seme"]
+                print(f"{nome_giocatore} ha giocato {valore5} di {seme5}.")
                 carta_giocata_computer = random.choice(mano_computer)
                 mano_computer.remove(carta_giocata_computer)
-                print(f"Il computer ha giocato {carta_giocata_computer}")
+                valore4 = carta_giocata_computer["valore"]
+                seme4 = carta_giocata_computer["seme"]
+                print(f"Il computer ha giocato {valore4} di {seme4}")
                 seme_prioritario = carta_giocata["seme"]
                 if len(mazzo) > 0:
                     carta_estratta_giocatore = estrai_carta(mazzo)
@@ -134,15 +153,38 @@ def partita():
             #inizia il computer
             elif primo_giocatore == "computer":
                 print(colored(f"La briscola è {carta_briscola['seme']}", "cyan"))
+                valore1 = mano_giocatore[0]["valore"]
+                valore2 = mano_giocatore[1]["valore"]
+                valore3 = mano_giocatore[2]["valore"]
+                seme1 = mano_giocatore[0]["seme"]
+                seme2 = mano_giocatore[1]["seme"]
+                seme3 = mano_giocatore[2]["seme"]
                 carta_giocata_computer = random.choice(mano_computer)
                 mano_computer.remove(carta_giocata_computer)
-                print(f"Il computer ha giocato {carta_giocata_computer}")
+                valore4 = carta_giocata_computer["valore"]
+                seme4 = carta_giocata_computer["seme"]
+                print(f"Il computer ha giocato {valore4} di {seme4}")
                 if len(mano_giocatore) == 3:
-                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}, 3 = {mano_giocatore[2]}", "yellow"))
+                    valore1 = mano_giocatore[0]["valore"]
+                    valore2 = mano_giocatore[1]["valore"]
+                    valore3 = mano_giocatore[2]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                    seme2 = mano_giocatore[1]["seme"]
+                    seme3 = mano_giocatore[2]["seme"]
                 elif len(mano_giocatore) == 2:
-                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}, 2 = {mano_giocatore[1]}", "yellow"))
+                    valore1 = mano_giocatore[0]["valore"]
+                    valore2 = mano_giocatore[1]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                    seme2 = mano_giocatore[1]["seme"]
                 elif len(mano_giocatore) == 1:
-                    print(colored(f"In mano hai 1 = {mano_giocatore[0]}", "yellow"))
+                    valore1 = mano_giocatore[0]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                if len(mano_giocatore) == 3:
+                    print(colored(f"In mano hai 1 = {valore1} di {seme1}, 2 = {valore2} di {seme2}, 3 = {valore3} di {seme3}", "yellow"))
+                elif len(mano_giocatore) == 2:
+                    print(colored(f"In mano hai 1 = {valore1} di {seme1}, 2 = {valore2} di {seme2}", "yellow"))
+                elif len(mano_giocatore) == 1:
+                    print(colored(f"In mano hai 1 = {valore1} di {seme1}", "yellow"))
                 carta_scelta = int(input(f"{nome_giocatore}, scegli la carta da giocare 1/2/3: "))
                 while carta_scelta not in [1, 2, 3,]:
                     print("Errore, inserisci un numero valido 1/2/3:")
@@ -150,7 +192,9 @@ def partita():
                 carta_scelta -= 1
                 carta_giocata = mano_giocatore[carta_scelta]
                 mano_giocatore.remove(carta_giocata)
-                print(f"{nome_giocatore} ha giocato {carta_giocata}.")
+                valore5 = carta_giocata["valore"]
+                seme5 = carta_giocata["seme"]
+                print(f"{nome_giocatore} ha giocato {valore5} di {seme5}.")
                 seme_prioritario = carta_giocata_computer["seme"]
                 if len(mazzo) > 0:
                     carta_estratta_giocatore = estrai_carta(mazzo)
