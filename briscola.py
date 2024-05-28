@@ -153,12 +153,21 @@ def partita():
             #inizia il computer
             elif primo_giocatore == "computer":
                 print(colored(f"La briscola è {carta_briscola['seme']}", "cyan"))
-                valore1 = mano_giocatore[0]["valore"]
-                valore2 = mano_giocatore[1]["valore"]
-                valore3 = mano_giocatore[2]["valore"]
-                seme1 = mano_giocatore[0]["seme"]
-                seme2 = mano_giocatore[1]["seme"]
-                seme3 = mano_giocatore[2]["seme"]
+                if len(mano_giocatore) == 3:
+                    valore1 = mano_giocatore[0]["valore"]
+                    valore2 = mano_giocatore[1]["valore"]
+                    valore3 = mano_giocatore[2]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                    seme2 = mano_giocatore[1]["seme"]
+                    seme3 = mano_giocatore[2]["seme"]
+                elif len(mano_giocatore) == 2:
+                    valore1 = mano_giocatore[0]["valore"]
+                    valore2 = mano_giocatore[1]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
+                    seme2 = mano_giocatore[1]["seme"]
+                elif len(mano_giocatore) == 1:
+                    valore1 = mano_giocatore[0]["valore"]
+                    seme1 = mano_giocatore[0]["seme"]
                 carta_giocata_computer = random.choice(mano_computer)
                 mano_computer.remove(carta_giocata_computer)
                 valore4 = carta_giocata_computer["valore"]
